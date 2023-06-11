@@ -1,0 +1,137 @@
+<template>
+  <div class="container">
+    <div class="row d-flex flex-column">
+      <div class="col-12 mb-3">
+        <h1 class="text-center">TODO Items</h1>
+        <AddTodo
+          v-if="formVisible"
+          @todoCreated="
+            getTodoItems();
+            showAddForm();
+          "
+        />
+      </div>
+
+      <div class="row w-50 m-auto align-center px-0 mb-1">
+        <div class="col-12 px-0">
+          <button class="btn btn-primary float-end" @click="showAddForm">
+            Add Task
+          </button>
+        </div>
+      </div>
+      <div class="row w-50 m-auto align-center border rounded">
+        <div class="row px-2 py-1">
+          <div class="col-1 px-0"><p class="mb-0"></p></div>
+          <div class="col-5">
+            <p class="mb-0 fw-bold">Task</p>
+            <hr class="m-0" />
+          </div>
+          <div class="col-3">
+            <p class="mb-0 fw-bold">Due Date</p>
+            <hr class="m-0" />
+          </div>
+          <div class="col-2">
+            <p class="mb-0 fw-bold">Priority</p>
+            <hr class="m-0" />
+          </div>
+          <div class="col-1 px-0"><p class="mb-0"></p></div>
+        </div>
+        <ToDoItem
+          v-for="todo in todos"
+          :todo="todo"
+          @deleteTodo="getTodoItems"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from "../router";
+import axios from "axios";
+import ToDoItem from "../components/TodoItem.vue";
+import AddTodo from "../components/AddTodo.vue";
+
+export default {
+  name: "Home",
+  components: {
+    ToDoItem,
+    AddTodo,
+  },
+  computed: {
+    isLoggedIn: function () {
+      return this.$store.state.loggedIn;
+    },
+  },
+  data() {
+    return {
+      user: {},
+      todos: [],
+      formVisible: false,
+    };
+  },
+  methods: {
+    checkLogin() {
+      axios({
+        method: "get",
+        url: "/users",
+        withCredentials: true,
+      })
+        .then((res) => {
+          if (res.data.user == null) {
+            this.$router.push("/");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getUserData: function () {
+      let self = this;
+      axios({
+        method: "get",
+        url: "/users",
+        withCredentials: true,
+      })
+        .then(function (response) {
+          if (response.data) {
+            console.log(response.data);
+            self.user = response.data;
+            self.toggleLoggedIn(true);
+          }
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
+    },
+    getTodoItems: function () {
+      let self = this;
+      axios({
+        method: "get",
+        url: "/todos",
+        data: {
+          id: this.user.id,
+        },
+        withCredentials: true,
+      })
+        .then(function (response) {
+          self.todos = response.data.todos;
+          self.todos.sortBy("dueDate");
+          console.log(self.todos);
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
+    },
+    showAddForm: function () {
+      this.formVisible = !this.formVisible;
+    },
+  },
+  mounted() {
+    this.checkLogin();
+    this.getTodoItems();
+  },
+};
+</script>
+
+<style scoped></style>
