@@ -15,7 +15,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-        <div v-if="isLoggedIn" class="dropdown">
+        <div v-if="loggedIn" class="dropdown">
           <button
             class="btn btn-secondary dropdown-toggle"
             type="button"
@@ -52,6 +52,7 @@ export default {
   data() {
     return {
       user: {},
+      loggedIn: false,
     };
   },
   methods: {
@@ -61,9 +62,9 @@ export default {
     checkLoggedIn: function () {
       try {
         this.getUserData();
-        this.toggleLoggedIn(true);
       } catch (error) {
         console.log(error);
+        self.loggedIn = false;
         this.toggleLoggedIn(false);
         router.push("/login");
       }
@@ -79,8 +80,10 @@ export default {
           if (response.data) {
             console.log(response.data);
             self.user = response.data;
+            self.loggedIn = true;
             toggleLoggedIn(true);
           } else {
+            self.loggedIn = false;
             toggleLoggedIn(false);
             router.push("/login");
           }
@@ -97,6 +100,7 @@ export default {
         withCredentials: true,
       })
         .then(function (response) {
+          self.loggedIn = false;
           self.toggleLoggedIn(false);
           router.push("/login");
         })
@@ -106,7 +110,7 @@ export default {
     },
   },
   mounted() {
-    this.getUserData();
+    this.checkLoggedIn();
   },
 };
 </script>
