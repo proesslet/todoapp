@@ -12,7 +12,7 @@
         />
       </div>
 
-      <div class="row w-50 m-auto align-center px-0 mb-1">
+      <div class="row w-75 m-auto align-center px-0 mb-1">
         <div class="col-12 px-0">
           <button class="btn btn-primary float-end" @click="showAddForm">
             Add Task
