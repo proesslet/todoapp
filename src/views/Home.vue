@@ -72,8 +72,23 @@ export default {
   },
   methods: {
     checkLogin() {
-      if (!this.isLoggedIn) {
-        router.push("/login");
+      try {
+        axios({
+          method: "get",
+          url: "/users",
+          withCredentials: true,
+        }).then((response) => {
+          if (response.data) {
+            this.toggleLoggedIn(true);
+            this.getUserData();
+            this.getTodoItems();
+          } else {
+            this.toggleLoggedIn(false);
+            router.push("/login");
+          }
+        });
+      } catch (error) {
+        console.log(error);
       }
     },
     getUserData: function () {
