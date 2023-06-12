@@ -78,8 +78,13 @@ export default {
       if (!this.isLoggedIn) {
         router.push("/login");
       } else {
-        this.getUserData();
-        this.getTodoItems();
+        try {
+          this.getUserData();
+          this.getTodoItems();
+        } catch (error) {
+          console.log(error);
+          router.push("/login");
+        }
       }
     },
     getUserData: function () {
