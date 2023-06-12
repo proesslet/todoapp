@@ -60,20 +60,22 @@ export default {
     },
     getUserData: function () {
       let self = this;
-      axios({
-        method: "get",
-        url: "/users",
-        withCredentials: true,
-      })
-        .then(function (response) {
-          if (response.data) {
-            self.user = response.data;
-            self.toggleLoggedIn(true);
-          }
+      if (this.isLoggedIn) {
+        axios({
+          method: "get",
+          url: "/users",
+          withCredentials: true,
         })
-        .catch((errors) => {
-          console.log(errors);
-        });
+          .then(function (response) {
+            if (response.data) {
+              console.log(response.data);
+              self.user = response.data;
+            }
+          })
+          .catch((errors) => {
+            console.log(errors);
+          });
+      }
     },
     logout: function () {
       let self = this;

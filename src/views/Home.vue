@@ -72,19 +72,9 @@ export default {
   },
   methods: {
     checkLogin() {
-      axios({
-        method: "get",
-        url: "/users",
-        withCredentials: true,
-      })
-        .then((res) => {
-          if (res.data.user == null) {
-            this.$router.push("/");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (!this.isLoggedIn) {
+        router.push("/login");
+      }
     },
     getUserData: function () {
       let self = this;
