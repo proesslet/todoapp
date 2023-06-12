@@ -12,7 +12,7 @@ export default {
 <template>
   <Nav />
   <main>
-    <RouterView />
+    <router-view />
   </main>
   <footer></footer>
 </template>
