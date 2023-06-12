@@ -19,7 +19,7 @@
           </button>
         </div>
       </div>
-      <div class="row w-50 m-auto align-center border rounded">
+      <div class="row w-75 m-auto align-center border rounded">
         <div class="row px-2 py-1">
           <div class="col-1 px-0"><p class="mb-0"></p></div>
           <div class="col-5">
