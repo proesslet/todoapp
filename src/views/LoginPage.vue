@@ -56,10 +56,6 @@ export default {
     toggleLoggedIn: function (newLoggedIn) {
       this.$store.commit("changeLoggedIn", newLoggedIn);
     },
-    allowLogin: function () {
-      this.toggleLoggedIn(true);
-      this.$router.push("/");
-    },
     loginUser: function (event) {
       let self = this;
       axios({
@@ -73,7 +69,7 @@ export default {
       })
         .then((response) => {
           console.log(response);
-          self.allowLogin();
+          self.toggleLoggedIn(true);
           self.$router.push("/");
         })
         .catch((error) => {
