@@ -75,16 +75,12 @@ export default {
       this.$store.commit("toggleLoggedIn", value);
     },
     checkLogin() {
-      if (!this.isLoggedIn) {
+      try {
+        this.getUserData();
+        this.getTodoItems();
+      } catch (error) {
+        console.log(error);
         router.push("/login");
-      } else {
-        try {
-          this.getUserData();
-          this.getTodoItems();
-        } catch (error) {
-          console.log(error);
-          router.push("/login");
-        }
       }
     },
     getUserData: function () {
