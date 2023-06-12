@@ -75,23 +75,11 @@ export default {
       this.$store.commit("toggleLoggedIn", value);
     },
     checkLogin() {
-      try {
-        axios({
-          method: "get",
-          url: "/users",
-          withCredentials: true,
-        }).then((response) => {
-          if (response.data) {
-            this.toggleLoggedIn(true);
-            this.getUserData();
-            this.getTodoItems();
-          } else {
-            this.toggleLoggedIn(false);
-            router.push("/login");
-          }
-        });
-      } catch (error) {
-        console.log(error);
+      if (!this.isLoggedIn) {
+        router.push("/login");
+      } else {
+        this.getUserData();
+        this.getTodoItems();
       }
     },
     getUserData: function () {
