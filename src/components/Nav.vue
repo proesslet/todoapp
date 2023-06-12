@@ -61,22 +61,21 @@ export default {
     getUserData: function () {
       let self = this;
       console.log(this.isLoggedIn);
-      if (this.isLoggedIn) {
-        axios({
-          method: "get",
-          url: "/users",
-          withCredentials: true,
+
+      axios({
+        method: "get",
+        url: "/users",
+        withCredentials: true,
+      })
+        .then(function (response) {
+          if (response.data) {
+            console.log(response.data);
+            self.user = response.data;
+          }
         })
-          .then(function (response) {
-            if (response.data) {
-              console.log(response.data);
-              self.user = response.data;
-            }
-          })
-          .catch((errors) => {
-            console.log(errors);
-          });
-      }
+        .catch((errors) => {
+          console.log(errors);
+        });
     },
     logout: function () {
       let self = this;
