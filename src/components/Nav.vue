@@ -60,8 +60,6 @@ export default {
     },
     getUserData: function () {
       let self = this;
-      console.log(this.isLoggedIn);
-
       axios({
         method: "get",
         url: "/users",
@@ -85,7 +83,7 @@ export default {
         withCredentials: true,
       })
         .then(function (response) {
-          this.toggleLoggedIn(false);
+          self.toggleLoggedIn(false);
           router.push("/login");
         })
         .catch((errors) => {
