@@ -60,6 +60,7 @@ export default {
     },
     getUserData: function () {
       let self = this;
+      console.log(this.isLoggedIn);
       if (this.isLoggedIn) {
         axios({
           method: "get",
