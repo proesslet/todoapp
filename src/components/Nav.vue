@@ -86,7 +86,7 @@ export default {
         withCredentials: true,
       })
         .then(function (response) {
-          self.toggleLoggedIn(false);
+          this.toggleLoggedIn(false);
           router.push("/login");
         })
         .catch((errors) => {

@@ -71,6 +71,9 @@ export default {
     };
   },
   methods: {
+    toggleLoggedIn: function (value) {
+      this.$store.commit("toggleLoggedIn", value);
+    },
     checkLogin() {
       try {
         axios({
