@@ -54,8 +54,7 @@ export default {
   },
   methods: {
     addBackground: function () {
-      document.body.style.backgroundImage =
-        "url(../assets/blob-scene-haikei.svg)";
+      document.body.style.backgroundImage = "url(./blob-scene-haikei.svg)";
     },
     toggleLoggedIn: function (newLoggedIn) {
       this.$store.commit("changeLoggedIn", newLoggedIn);
