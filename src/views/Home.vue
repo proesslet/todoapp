@@ -103,6 +103,8 @@ export default {
         })
         .catch((errors) => {
           console.log(errors);
+          self.toggleLoggedIn(false);
+          router.push("/login");
         });
     },
     getTodoItems: function () {
