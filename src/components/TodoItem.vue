@@ -63,11 +63,11 @@ export default {
       let todoContent = document.getElementsByClassName("todoContent");
       if (this.checked) {
         for (let i = 0; i < todoContent.length; i++) {
-          todoContent[i].style.textDecoration = "line-through";
+          todoContent[i].classList.add("strike");
         }
       } else {
         for (let i = 0; i < todoContent.length; i++) {
-          todoContent[i].style.textDecoration = "none";
+          todoContent[i].classList.remove("strike");
         }
       }
     },
@@ -114,4 +114,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.strike {
+  text-decoration: line-through;
+}
+</style>
