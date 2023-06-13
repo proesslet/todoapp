@@ -111,6 +111,10 @@ export default {
       })
         .then(function (response) {
           self.todos = response.data.todos;
+          // Sort todos by date
+          self.todos.sort(function (a, b) {
+            return new Date(a.due_date) - new Date(b.due_date);
+          });
         })
         .catch((errors) => {
           console.log(errors);
