@@ -8,13 +8,22 @@
         @click="toggleComplete"
       />
     </div>
-    <div class="col-5 todoContent">
+    <div v-if="todo.complete" class="col-5">
+      <span class="strike">{{ todo.content }}</span>
+    </div>
+    <div v-else class="col-5">
       <span>{{ todo.content }}</span>
     </div>
-    <div class="col-3 todoContent">
+    <div v-if="todo.complete" class="col-3">
+      <span class="strike">{{ dueDate }}</span>
+    </div>
+    <div v-else class="col-3">
       <span>{{ dueDate }}</span>
     </div>
-    <div class="col-2 todoContent">
+    <div v-if="todo.complete" class="col-2">
+      <span class="strike">{{ priority }}</span>
+    </div>
+    <div v-else class="col-2">
       <span>{{ priority }}</span>
     </div>
     <div class="col-1">
@@ -59,18 +68,6 @@ export default {
         this.priority = "Low";
       }
     },
-    getStrikes() {
-      let todoContent = document.getElementsByClassName("todoContent");
-      if (this.checked) {
-        for (let i = 0; i < todoContent.length; i++) {
-          todoContent[i].classList.add("strike");
-        }
-      } else {
-        for (let i = 0; i < todoContent.length; i++) {
-          todoContent[i].classList.remove("strike");
-        }
-      }
-    },
     toggleComplete: function () {
       // Put strike through text
       let self = this;
@@ -85,7 +82,6 @@ export default {
       })
         .then((res) => {
           console.log(res);
-          self.getStrikes();
         })
         .catch((err) => {
           console.log(err);
@@ -109,7 +105,6 @@ export default {
   mounted() {
     this.getDueDate();
     this.getPriority();
-    this.getStrikes();
   },
 };
 </script>
