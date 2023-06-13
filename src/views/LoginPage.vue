@@ -100,6 +100,9 @@ export default {
         });
     },
   },
+  mounted() {
+    this.addBackground();
+  },
 };
 </script>
 
