@@ -62,7 +62,7 @@ export default {
       if (this.isLoggedIn) {
         this.getUserData();
       } else {
-        toggleLoggedIn(false);
+        this.toggleLoggedIn(false);
         router.push("/login");
       }
     },
@@ -77,11 +77,10 @@ export default {
           if (response.data) {
             console.log(response.data);
             self.user = response.data;
-            self.loggedIn = true;
-            toggleLoggedIn(true);
+            self.toggleLoggedIn(true);
           } else {
             self.loggedIn = false;
-            toggleLoggedIn(false);
+            self.toggleLoggedIn(false);
             router.push("/login");
           }
         })
