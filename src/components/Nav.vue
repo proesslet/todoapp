@@ -59,6 +59,7 @@ export default {
       this.$store.commit("changeLoggedIn", newLoggedIn);
     },
     checkLoggedIn: function () {
+      console.log("Logged In :" + this.isLoggedIn);
       if (this.isLoggedIn) {
         this.getUserData();
       } else {
@@ -74,12 +75,13 @@ export default {
         withCredentials: true,
       })
         .then(function (response) {
-          if (response.data) {
-            console.log(response.data);
+          if (response.status === 200) {
+            console.log("Response: " + response);
+            console.log("Response.data: " + response.data);
+            console.log("User: " + response.data.username);
             self.user = response.data;
             self.toggleLoggedIn(true);
           } else {
-            self.loggedIn = false;
             self.toggleLoggedIn(false);
             router.push("/login");
           }
