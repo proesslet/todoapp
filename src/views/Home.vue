@@ -127,6 +127,7 @@ export default {
             }
             return 0;
           });
+          console.log(self.todos);
         })
         .catch((errors) => {
           console.log(errors);
