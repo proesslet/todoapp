@@ -55,8 +55,16 @@ export default {
   methods: {
     getDueDate: function () {
       if (this.todo.dueDate) {
+        // Convert datetime to date, e.g. 2021-07-01T00:00:00.000Z to 2021-07-01
+        // Then make it look like June 7, 2021
         let date = new Date(this.todo.dueDate);
-        this.dueDate = date.toDateString().slice(4);
+        this.dueDate = date.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        });
+      } else {
+        this.dueDate = "No due date";
       }
     },
     getPriority: function () {
