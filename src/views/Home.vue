@@ -95,6 +95,9 @@ export default {
             console.log(response.data);
             self.user = response.data;
             self.toggleLoggedIn(true);
+          } else {
+            self.toggleLoggedIn(false);
+            router.push("/login");
           }
         })
         .catch((errors) => {
