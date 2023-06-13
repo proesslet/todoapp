@@ -90,19 +90,13 @@ export default {
         url: "/users",
         withCredentials: true,
       })
-        .then(function (response) {
-          if (response.status === 200) {
-            self.user = response.data;
-            self.toggleLoggedIn(true);
-          } else {
-            self.toggleLoggedIn(false);
-            router.push("/login");
-          }
+        .then((response) => {
+          console.log(response);
+          self.user = response.data;
+          self.toggleLoggedIn(true);
         })
-        .catch((errors) => {
-          console.log(errors);
-          self.toggleLoggedIn(false);
-          router.push("/login");
+        .catch((error) => {
+          console.log(error);
         });
     },
     getTodoItems: function () {

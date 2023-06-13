@@ -56,6 +56,26 @@ export default {
     toggleLoggedIn: function (newLoggedIn) {
       this.$store.commit("changeLoggedIn", newLoggedIn);
     },
+    storeUserData: function (userData) {
+      this.$store.commit("storeUserData", userData);
+    },
+    getUserData: function () {
+      let self = this;
+      axios({
+        method: "get",
+        url: "/users",
+        withCredentials: true,
+      })
+        .then((response) => {
+          console.log(response);
+          self.toggleLoggedIn(true);
+          self.storeUserData(response.data);
+          self.$router.push("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     loginUser: function (event) {
       let self = this;
       axios({
@@ -69,6 +89,7 @@ export default {
       })
         .then((response) => {
           console.log(response);
+          self.getUserData();
           self.toggleLoggedIn(true);
           self.$router.push("/");
         })

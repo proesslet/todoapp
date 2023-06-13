@@ -15,16 +15,23 @@ const user = createStore({
   state() {
     return {
       loggedIn: false,
+      user: {},
     };
   },
   mutations: {
     changeLoggedIn(state, payload) {
       state.loggedIn = payload;
     },
+    changeUser(state, payload) {
+      state.user = payload;
+    },
   },
   getters: {
     loggedIn(state) {
       return state.loggedIn;
+    },
+    user(state) {
+      return state.user;
     },
   },
 });
