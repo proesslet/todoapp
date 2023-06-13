@@ -8,13 +8,13 @@
         @click="toggleComplete"
       />
     </div>
-    <div class="col-5">
+    <div class="col-5 todoContent">
       <span>{{ todo.content }}</span>
     </div>
-    <div class="col-3">
+    <div class="col-3 todoContent">
       <span>{{ dueDate }}</span>
     </div>
-    <div class="col-2">
+    <div class="col-2 todoContent">
       <span>{{ priority }}</span>
     </div>
     <div class="col-1">
@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style scoped>
-.input[type="checkbox"]:checked div {
+.input[type="checkbox"]:checked ~ div {
   text-decoration: line-through;
 }
 </style>
