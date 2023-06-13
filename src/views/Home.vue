@@ -99,18 +99,6 @@ export default {
           console.log(error);
         });
     },
-    getPriority: function (priority) {
-      switch (priority) {
-        case 1:
-          return "High";
-        case 2:
-          return "Medium";
-        case 3:
-          return "Low";
-        default:
-          return "None";
-      }
-    },
     getTodoItems: function () {
       let self = this;
       axios({
@@ -141,8 +129,15 @@ export default {
             }
           });
 
-          this.todos.forEach((todo) => {
-            todo.priority = self.getPriority(todo.priority);
+          // Change priority from 1, 2, 3 to High, Medium, Low
+          self.todos.forEach((todo) => {
+            if (todo.priority === 1) {
+              todo.priority = "High";
+            } else if (todo.priority === 2) {
+              todo.priority = "Medium";
+            } else if (todo.priority === 3) {
+              todo.priority = "Low";
+            }
           });
         })
         .catch((errors) => {
