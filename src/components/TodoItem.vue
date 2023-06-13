@@ -1,6 +1,6 @@
 <template>
   <div class="row border-bottom p-2">
-    <div id="todoCheck" class="col-1">
+    <div class="col-1">
       <input
         type="checkbox"
         class="mx-2"
@@ -59,8 +59,18 @@ export default {
         this.priority = "Low";
       }
     },
+    getStrikes() {
+      // Get element without jQuery
+      let todoContent = this.$el.querySelector(".todoContent");
+      if (this.checked) {
+        todoContent.style.textDecoration = "line-through";
+      } else {
+        todoContent.style.textDecoration = "none";
+      }
+    },
     toggleComplete: function () {
       // Put strike through text
+      let self = this;
       this.checked = !this.checked;
       axios({
         method: "put",
@@ -72,12 +82,7 @@ export default {
       })
         .then((res) => {
           console.log(res);
-          // Put strike through text
-          if (todoCheck.checked) {
-            todoContent.style.textDecoration = "line-through";
-          } else {
-            todoContent.style.textDecoration = "none";
-          }
+          self.getStrikes();
         })
         .catch((err) => {
           console.log(err);
