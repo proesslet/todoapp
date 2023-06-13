@@ -48,11 +48,12 @@ export default {
     isLoggedIn: function () {
       return this.$store.state.loggedIn;
     },
+    user: function () {
+      return this.$store.state.user;
+    },
   },
   data() {
-    return {
-      user: {},
-    };
+    return {};
   },
   methods: {
     toggleLoggedIn: function (newLoggedIn) {
@@ -60,7 +61,9 @@ export default {
     },
     getUserData: function () {
       if (this.isLoggedIn) {
+        console.log("Store: ", this.$store.state.user);
         this.user = this.$store.state.user;
+        console.log("User: ", this.user);
       } else {
         console.log("Not logged in");
       }

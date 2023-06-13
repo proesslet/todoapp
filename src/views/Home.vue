@@ -91,7 +91,6 @@ export default {
         withCredentials: true,
       })
         .then((response) => {
-          console.log(response);
           self.user = response.data;
           self.toggleLoggedIn(true);
         })
@@ -111,7 +110,6 @@ export default {
       })
         .then(function (response) {
           self.todos = response.data.todos;
-          console.log(self.todos);
         })
         .catch((errors) => {
           console.log(errors);
