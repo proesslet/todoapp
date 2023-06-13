@@ -111,7 +111,6 @@ export default {
       })
         .then(function (response) {
           self.todos = response.data.todos;
-          self.todos.sortBy("dueDate");
           console.log(self.todos);
         })
         .catch((errors) => {
