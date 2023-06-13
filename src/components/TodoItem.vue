@@ -110,4 +110,8 @@ export default {
 .strike {
   text-decoration: line-through;
 }
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+}
 </style>
