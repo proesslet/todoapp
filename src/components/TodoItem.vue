@@ -11,22 +11,22 @@
     <div v-if="todo.complete" class="col-5 d-flex align-items-center">
       <span class="strike">{{ todo.content }}</span>
     </div>
-    <div v-else class="col-5">
+    <div v-else class="col-5 d-flex align-items-center">
       <span>{{ todo.content }}</span>
     </div>
-    <div v-if="todo.complete" class="col-3">
+    <div v-if="todo.complete" class="col-3 d-flex align-items-center">
       <span class="strike">{{ dueDate }}</span>
     </div>
-    <div v-else class="col-3">
+    <div v-else class="col-3 d-flex align-items-center">
       <span>{{ dueDate }}</span>
     </div>
-    <div v-if="todo.complete" class="col-2">
+    <div v-if="todo.complete" class="col-2 d-flex align-items-center">
       <span class="strike">{{ todo.priority }}</span>
     </div>
-    <div v-else class="col-2">
+    <div v-else class="col-2 d-flex align-items-center">
       <span>{{ todo.priority }}</span>
     </div>
-    <div class="col-1">
+    <div class="col-1 d-flex align-items-center">
       <button class="btn btn-danger btn-sm float-right" @click="deleteTodo">
         Delete
       </button>
