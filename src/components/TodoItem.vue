@@ -1,6 +1,6 @@
 <template>
   <div class="row border-bottom p-2">
-    <div class="col-1">
+    <div class="col-1 clearfix">
       <input
         type="checkbox"
         class="mx-2"
@@ -114,5 +114,7 @@ export default {
 input[type="checkbox"] {
   transform: scale(1.5);
   float: right;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 </style>
