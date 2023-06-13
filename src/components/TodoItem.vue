@@ -90,7 +90,6 @@ export default {
         withCredentials: true,
       })
         .then((res) => {
-          console.log(res);
           self.$emit("toggle-complete", self.todo.id);
         })
         .catch((err) => {
@@ -104,7 +103,6 @@ export default {
         withCredentials: true,
       })
         .then((res) => {
-          console.log(res);
           this.$emit("delete-todo", this.todo.id);
         })
         .catch((err) => {

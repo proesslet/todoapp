@@ -127,7 +127,6 @@ export default {
               }
             }
           });
-          console.log(self.todos);
         })
         .catch((errors) => {
           console.log(errors);
