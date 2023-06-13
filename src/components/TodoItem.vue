@@ -113,5 +113,6 @@ export default {
 
 input[type="checkbox"] {
   transform: scale(1.5);
+  float: right;
 }
 </style>

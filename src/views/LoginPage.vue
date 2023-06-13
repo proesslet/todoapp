@@ -67,7 +67,6 @@ export default {
         withCredentials: true,
       })
         .then((response) => {
-          console.log(response);
           self.toggleLoggedIn(true);
           self.storeUserData(response.data);
           self.$router.push("/");
@@ -88,7 +87,6 @@ export default {
         withCredentials: true,
       })
         .then((response) => {
-          console.log(response);
           self.getUserData();
           self.toggleLoggedIn(true);
           self.$router.push("/");
