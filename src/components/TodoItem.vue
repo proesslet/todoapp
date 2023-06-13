@@ -82,6 +82,7 @@ export default {
       })
         .then((res) => {
           console.log(res);
+          self.$emit("toggle-complete", self.todo.id);
         })
         .catch((err) => {
           console.log(err);

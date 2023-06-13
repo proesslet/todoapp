@@ -40,6 +40,7 @@
           v-for="todo in todos"
           :todo="todo"
           @deleteTodo="getTodoItems"
+          @toggle-complete="getTodoItems"
         />
       </div>
     </div>
