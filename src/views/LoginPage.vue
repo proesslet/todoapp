@@ -54,9 +54,7 @@ export default {
   },
   methods: {
     addBackground: function () {
-      document.body.style.background =
-        "url(./blob-scene-haikei.svg) no0-repeat center center fixed";
-      document.body.style.backgroundSize = "cover";
+      document.getElementsByTagName("body")[0].classList.add("backgroundImg");
     },
     toggleLoggedIn: function (newLoggedIn) {
       this.$store.commit("changeLoggedIn", newLoggedIn);
@@ -110,5 +108,9 @@ export default {
 <style scoped>
 .row {
   height: 100vh;
+}
+.backgroundImg {
+  background: url(./blob-scene-haikei.svg) no-repeat center center fixed;
+  background-size: cover;
 }
 </style>
