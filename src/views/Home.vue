@@ -111,7 +111,7 @@ export default {
       })
         .then(function (response) {
           self.todos = response.data.todos;
-          // Sort todos by dueDate then by priority
+          // Sort todos by dueDate then by priority (high to low)
           self.todos.sort((a, b) => {
             if (a.dueDate < b.dueDate) {
               return -1;
@@ -119,9 +119,9 @@ export default {
               return 1;
             } else {
               if (a.priority < b.priority) {
-                return -1;
-              } else if (a.priority > b.priority) {
                 return 1;
+              } else if (a.priority > b.priority) {
+                return -1;
               } else {
                 return 0;
               }
