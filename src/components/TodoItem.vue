@@ -1,6 +1,6 @@
 <template>
   <div class="row border-bottom p-2">
-    <div class="col-1">
+    <div id="todoCheck" class="col-1">
       <input
         type="checkbox"
         class="mx-2"
@@ -73,6 +73,11 @@ export default {
         .then((res) => {
           console.log(res);
           // Put strike through text
+          if (todoCheck.checked) {
+            todoContent.style.textDecoration = "line-through";
+          } else {
+            todoContent.style.textDecoration = "none";
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -100,8 +105,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.input[type="checkbox"]:checked ~ .todoContent span {
-  text-decoration: line-through;
-}
-</style>
+<style scoped></style>
