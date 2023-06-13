@@ -43,6 +43,8 @@ function getUserData() {
       if (response.data) {
         user.commit("changeLoggedIn", true);
         user.commit("changeUser", response.data);
+        console.log(response.data);
+        console.log("User data retrieved successfully!");
       }
     })
     .catch((error) => {
