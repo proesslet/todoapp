@@ -24,7 +24,7 @@
       <span class="strike">{{ priority }}</span>
     </div>
     <div v-else class="col-2">
-      <span>{{ priority }}</span>
+      <span>{{ todo.priority }}</span>
     </div>
     <div class="col-1">
       <button class="btn btn-danger btn-sm float-right" @click="deleteTodo">
@@ -49,7 +49,6 @@ export default {
       checked: this.todo.complete,
       // convert date time to date
       dueDate: "",
-      priority: "",
     };
   },
   methods: {
