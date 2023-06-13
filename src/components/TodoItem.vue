@@ -109,6 +109,7 @@ export default {
   mounted() {
     this.getDueDate();
     this.getPriority();
+    this.getStrikes();
   },
 };
 </script>
