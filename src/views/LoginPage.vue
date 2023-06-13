@@ -53,6 +53,10 @@ export default {
     };
   },
   methods: {
+    addBackground: function () {
+      document.getElementsByTagName("body").style.backgroundimage =
+        "url(../assets/blob-scene-haikei.svg)";
+    },
     toggleLoggedIn: function (newLoggedIn) {
       this.$store.commit("changeLoggedIn", newLoggedIn);
     },
@@ -102,9 +106,5 @@ export default {
 <style scoped>
 .row {
   height: 100vh;
-}
-
-template {
-  background-image: "./assets/blob-scene-haikei.svg";
 }
 </style>
