@@ -90,7 +90,7 @@ export default {
     },
   },
   mounted() {
-    this.checkLoggedIn();
+    this.getUserData();
   },
 };
 </script>
