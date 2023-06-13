@@ -91,9 +91,7 @@ export default {
         withCredentials: true,
       })
         .then(function (response) {
-          console.log(response.status);
-          if (response.data) {
-            console.log(response.data);
+          if (response.status === 200) {
             self.user = response.data;
             self.toggleLoggedIn(true);
           } else {

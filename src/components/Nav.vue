@@ -15,7 +15,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-        <div v-if="loggedIn" class="dropdown">
+        <div v-if="this.loggedIn" class="dropdown">
           <button
             class="btn btn-secondary dropdown-toggle"
             type="button"
@@ -52,7 +52,6 @@ export default {
   data() {
     return {
       user: {},
-      loggedIn: false,
     };
   },
   methods: {
@@ -60,12 +59,10 @@ export default {
       this.$store.commit("changeLoggedIn", newLoggedIn);
     },
     checkLoggedIn: function () {
-      try {
+      if (this.isLoggedIn) {
         this.getUserData();
-      } catch (error) {
-        console.log(error);
-        self.loggedIn = false;
-        this.toggleLoggedIn(false);
+      } else {
+        toggleLoggedIn(false);
         router.push("/login");
       }
     },
