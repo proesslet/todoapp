@@ -91,6 +91,7 @@ export default {
         withCredentials: true,
       })
         .then(function (response) {
+          console.log(response.data);
           if (response.data) {
             console.log(response.data);
             self.user = response.data;
