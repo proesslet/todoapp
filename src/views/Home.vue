@@ -111,21 +111,21 @@ export default {
       })
         .then(function (response) {
           self.todos = response.data.todos;
-          // Sort todos by dueDate then priority
-          self.todos.sort(function (a, b) {
+          // Sort todos by dueDate then by priority
+          self.todos.sort((a, b) => {
             if (a.dueDate < b.dueDate) {
               return -1;
-            }
-            if (a.dueDate > b.dueDate) {
+            } else if (a.dueDate > b.dueDate) {
               return 1;
+            } else {
+              if (a.priority < b.priority) {
+                return -1;
+              } else if (a.priority > b.priority) {
+                return 1;
+              } else {
+                return 0;
+              }
             }
-            if (a.priority < b.priority) {
-              return -1;
-            }
-            if (a.priority > b.priority) {
-              return 1;
-            }
-            return 0;
           });
           console.log(self.todos);
         })
