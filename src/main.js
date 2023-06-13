@@ -15,7 +15,7 @@ const user = createStore({
   state() {
     return {
       loggedIn: false,
-      user: getUserData(),
+      user: {},
     };
   },
   mutations: {
@@ -35,24 +35,6 @@ const user = createStore({
     },
   },
 });
-
-function getUserData() {
-  axios({
-    method: "get",
-    url: "/user",
-    withCredentials: true,
-  }).then((res) => {
-    if (res.data) {
-      user.commit("changeLoggedIn", true);
-      user.commit("changeUser", res.data);
-      console.log("User: " + res.data);
-    } else {
-      user.commit("changeLoggedIn", false);
-      user.commit("changeUser", null);
-      console.log("No user");
-    }
-  });
-}
 
 app.use(user);
 

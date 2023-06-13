@@ -60,13 +60,19 @@ export default {
       this.$store.commit("changeLoggedIn", newLoggedIn);
     },
     getUserData: function () {
-      if (this.isLoggedIn) {
-        console.log("Store: ", this.$store.state.user);
-        this.user = this.$store.state.user;
-        console.log("User: ", this.user);
-      } else {
-        console.log("Not logged in");
-      }
+      axios({
+        method: "get",
+        url: "/users",
+        withCredentials: true,
+      })
+        .then((response) => {
+          this.$store.commit("changeUser", response.data);
+          this.toggleLoggedIn(true);
+          console.log(response);
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
     },
     logout: function () {
       let self = this;
