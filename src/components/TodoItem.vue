@@ -1,6 +1,6 @@
 <template>
   <div class="row border-bottom p-2">
-    <div class="col-1">
+    <div class="col-1 d-flex align-items-center justify-content-end">
       <input
         type="checkbox"
         class="mx-2"
@@ -111,10 +111,7 @@ export default {
   text-decoration: line-through;
 }
 
-/* Put checkbox on right side of it's div but keep it vertically centered. Also make it bigger */
 input[type="checkbox"] {
   transform: scale(1.5);
-  vertical-align: middle;
-  float: right;
 }
 </style>
