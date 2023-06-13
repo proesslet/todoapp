@@ -68,7 +68,6 @@ export default {
         .then((response) => {
           this.$store.commit("changeUser", response.data);
           this.toggleLoggedIn(true);
-          console.log(response);
         })
         .catch((errors) => {
           console.log(errors);

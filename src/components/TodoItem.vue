@@ -68,15 +68,6 @@ export default {
         this.dueDate = "No due date";
       }
     },
-    getPriority: function () {
-      if (this.todo.priority === 3) {
-        this.priority = "High";
-      } else if (this.todo.priority === 2) {
-        this.priority = "Medium";
-      } else {
-        this.priority = "Low";
-      }
-    },
     toggleComplete: function () {
       // Put strike through text
       let self = this;
@@ -112,7 +103,6 @@ export default {
   },
   mounted() {
     this.getDueDate();
-    this.getPriority();
   },
 };
 </script>

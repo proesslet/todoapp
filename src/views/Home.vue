@@ -99,6 +99,18 @@ export default {
           console.log(error);
         });
     },
+    getPriority: function (priority) {
+      switch (priority) {
+        case 1:
+          return "High";
+        case 2:
+          return "Medium";
+        case 3:
+          return "Low";
+        default:
+          return "None";
+      }
+    },
     getTodoItems: function () {
       let self = this;
       axios({
@@ -111,6 +123,7 @@ export default {
       })
         .then(function (response) {
           self.todos = response.data.todos;
+
           // Sort todos by dueDate then by priority (high to low)
           self.todos.sort((a, b) => {
             if (a.dueDate < b.dueDate) {
@@ -126,6 +139,10 @@ export default {
                 return 0;
               }
             }
+          });
+
+          this.todos.forEach((todo) => {
+            todo.priority = self.getPriority(todo.priority);
           });
         })
         .catch((errors) => {
