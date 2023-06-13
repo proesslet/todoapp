@@ -109,8 +109,8 @@ export default {
 .row {
   height: 100vh;
 }
-.backgroundImg {
-  background: url(./blob-scene-haikei.svg) no-repeat center center fixed;
-  background-size: cover;
+body {
+  background: url(./blob-scene-haikei.svg) no-repeat center center fixed !important;
+  background-size: cover !important;
 }
 </style>
