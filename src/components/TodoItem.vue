@@ -56,8 +56,9 @@ export default {
     getDueDate: function () {
       if (this.todo.dueDate) {
         // Convert datetime to date, e.g. 2021-07-01T00:00:00.000Z to 2021-07-01
-        // Then make it look like June 7, 2021
+        // Then make it look like June 7, 2021. Make sure it does not go back a day
         let date = new Date(this.todo.dueDate);
+        date.setDate(date.getDate() + 1);
         this.dueDate = date.toLocaleDateString("en-US", {
           month: "long",
           day: "numeric",
