@@ -60,12 +60,15 @@ export default {
       }
     },
     getStrikes() {
-      // Get element without jQuery
-      let todoContent = this.$el.querySelector(".todoContent");
+      let todoContent = document.getElementsByClassName("todoContent");
       if (this.checked) {
-        todoContent.style.textDecoration = "line-through";
+        for (let i = 0; i < todoContent.length; i++) {
+          todoContent[i].style.textDecoration = "line-through";
+        }
       } else {
-        todoContent.style.textDecoration = "none";
+        for (let i = 0; i < todoContent.length; i++) {
+          todoContent[i].style.textDecoration = "none";
+        }
       }
     },
     toggleComplete: function () {
