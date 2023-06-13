@@ -37,19 +37,21 @@ const user = createStore({
 });
 
 function getUserData() {
-  axios
-    .get("/user")
-    .then((response) => {
-      if (response.data) {
-        user.commit("changeLoggedIn", true);
-        user.commit("changeUser", response.data);
-        console.log(response.data);
-        console.log("User data retrieved successfully!");
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  axios({
+    method: "get",
+    url: "/user",
+    withCredentials: true,
+  }).then((res) => {
+    if (res.data) {
+      user.commit("changeLoggedIn", true);
+      user.commit("changeUser", res.data);
+      console.log("User: " + res.data);
+    } else {
+      user.commit("changeLoggedIn", false);
+      user.commit("changeUser", null);
+      console.log("No user");
+    }
+  });
 }
 
 app.use(user);
