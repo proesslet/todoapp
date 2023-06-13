@@ -111,9 +111,21 @@ export default {
       })
         .then(function (response) {
           self.todos = response.data.todos;
-          // Sort todos by date
+          // Sort todos by dueDate then priority
           self.todos.sort(function (a, b) {
-            return new Date(a.due_date) - new Date(b.due_date);
+            if (a.dueDate < b.dueDate) {
+              return -1;
+            }
+            if (a.dueDate > b.dueDate) {
+              return 1;
+            }
+            if (a.priority < b.priority) {
+              return -1;
+            }
+            if (a.priority > b.priority) {
+              return 1;
+            }
+            return 0;
           });
         })
         .catch((errors) => {
