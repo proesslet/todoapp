@@ -129,7 +129,6 @@ export default {
             }
           });
 
-          console.log(self.todos);
           // Change priority from 1, 2, 3 to High, Medium, Low
           self.todos.forEach((todo) => {
             if (todo.priority === 1) {
@@ -140,8 +139,6 @@ export default {
               todo.priority = "High";
             }
           });
-
-          console.log(self.todos);
         })
         .catch((errors) => {
           console.log(errors);

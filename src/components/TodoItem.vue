@@ -21,7 +21,7 @@
       <span>{{ dueDate }}</span>
     </div>
     <div v-if="todo.complete" class="col-2">
-      <span class="strike">{{ priority }}</span>
+      <span class="strike">{{ todo.priority }}</span>
     </div>
     <div v-else class="col-2">
       <span>{{ todo.priority }}</span>
