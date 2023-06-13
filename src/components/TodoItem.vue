@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style scoped>
-.input[type="checkbox"]:checked ~ div {
+.input[type="checkbox"]:checked ~ .todoContent span {
   text-decoration: line-through;
 }
 </style>
