@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row text-white">
       <div
         class="col-md-7 align-center m-auto text-center p-5 order-2 order-md-1"
       >
