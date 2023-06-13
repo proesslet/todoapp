@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row text-white">
+    <div class="row">
       <div
         class="col-md-7 align-center m-auto text-center p-5 order-2 order-md-1"
       >
@@ -53,9 +53,6 @@ export default {
     };
   },
   methods: {
-    addBackground: function () {
-      document.getElementsByTagName("body")[0].classList.add("backgroundImg");
-    },
     toggleLoggedIn: function (newLoggedIn) {
       this.$store.commit("changeLoggedIn", newLoggedIn);
     },
@@ -108,9 +105,5 @@ export default {
 <style scoped>
 .row {
   height: 100vh;
-}
-body {
-  background: url(./blob-scene-haikei.svg) no-repeat center center fixed !important;
-  background-size: cover !important;
 }
 </style>
