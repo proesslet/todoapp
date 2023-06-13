@@ -103,4 +103,8 @@ export default {
 .row {
   height: 100vh;
 }
+
+template {
+  background-image: "./assets/blob-scene-haikei.svg";
+}
 </style>
