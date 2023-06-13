@@ -60,6 +60,7 @@ export default {
       }
     },
     toggleComplete: function () {
+      // Put strike through text
       this.checked = !this.checked;
       axios({
         method: "put",
@@ -71,6 +72,7 @@ export default {
       })
         .then((res) => {
           console.log(res);
+          // Put strike through text
         })
         .catch((err) => {
           console.log(err);
@@ -97,3 +99,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.input[type="checkbox"]:checked div {
+  text-decoration: line-through;
+}
+</style>
