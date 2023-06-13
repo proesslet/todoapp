@@ -3,12 +3,12 @@
     <div class="col-1 d-flex align-items-center justify-content-end">
       <input
         type="checkbox"
-        class="mx-2"
+        class="ml-auto"
         v-model="checked"
         @click="toggleComplete"
       />
     </div>
-    <div v-if="todo.complete" class="col-5">
+    <div v-if="todo.complete" class="col-5 d-flex align-items-center">
       <span class="strike">{{ todo.content }}</span>
     </div>
     <div v-else class="col-5">
