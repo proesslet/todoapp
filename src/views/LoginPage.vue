@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     addBackground: function () {
-      document.getElementsByTagName("body").style.backgroundimage =
+      document.body.style.backgroundImage =
         "url(../assets/blob-scene-haikei.svg)";
     },
     toggleLoggedIn: function (newLoggedIn) {
