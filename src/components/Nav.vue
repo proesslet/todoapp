@@ -15,7 +15,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-        <div v-if="this.loggedIn" class="dropdown">
+        <div v-if="this.isLoggedIn" class="dropdown">
           <button
             class="btn btn-secondary dropdown-toggle"
             type="button"
